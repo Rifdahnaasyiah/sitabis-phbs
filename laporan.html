@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Laporan Per Tahun</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+        }
+        .header {
+            text-align: center;
+            font-weight: bold;
+        }
+        .sub-header {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: center;
+        }
+        .signature {
+            margin-top: 50px;
+            text-align: right;
+        }
+        .sign-line {
+            display: inline-block;
+            width: 200px;
+            border-top: 1px solid black;
+            text-align: center;
+        }
+        .footer {
+            text-align: left;
+            margin-top: 80px;
+        }
+    </style>
+    <script>
+        function calculateTotal(row) {
+            // Get the values from the input fields
+            var gajiPokok = parseFloat(document.getElementById('gajiPokok' + row).value) || 0;
+            var transportasi = parseFloat(document.getElementById('transportasi' + row).value) || 0;
+            var uangMakan = parseFloat(document.getElementById('uangMakan' + row).value) || 0;
+            var bonusLembur = parseFloat(document.getElementById('bonusLembur' + row).value) || 0;
+            var bonusTahunan = parseFloat(document.getElementById('bonusTahunan' + row).value) || 0;
+            
+            // Calculate the total salary
+            var totalGaji = gajiPokok + transportasi + uangMakan + bonusLembur + bonusTahunan;
+            
+            // Set the calculated value in the Total Gaji column
+            document.getElementById('totalGaji' + row).textContent = totalGaji.toFixed(2);
+        }
+    </script>
+</head>
+<body>
+    <div class="header">
+        <h3>CV INSABA PRATISTA AGYA</h3>
+        <p>Daftar gaji pegawai</p>
+    </div>
+    <div class="sub-header">
+        <p>Bulan: ...................... (1)</p>
+        <p>Tahun: ...................... (2)</p>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>NO</th>
+                <th>NIP</th>
+                <th>Nama Pegawai</th>
+                <th>Jabatan</th>
+                <th>Gaji Pokok</th>
+                <th>Tj. Transportasi</th>
+                <th>Uang Makan</th>
+                <th>Bonus Lembur</th>
+                <th>Bonus Tahunan</th>
+                <th>Total Gaji</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Sample data row, repeat as needed -->
+            <tr>
+                <td>1</td>
+                <td>12345</td>
+                <td>John Doe</td>
+                <td>Manager</td>
+                <td><input type="number" id="gajiPokok1" oninput="calculateTotal(1)" /></td>
+                <td><input type="number" id="transportasi1" oninput="calculateTotal(1)" /></td>
+                <td><input type="number" id="uangMakan1" oninput="calculateTotal(1)" /></td>
+                <td><input type="number" id="bonusLembur1" oninput="calculateTotal(1)" /></td>
+                <td><input type="number" id="bonusTahunan1" oninput="calculateTotal(1)" /></td>
+                <td id="totalGaji1">0.00</td>
+            </tr>
+            <!-- Add more rows as necessary -->
+        </tbody>
+    </table>
+    <div class="signature">
+        <p>.................................... (11) xx (12)</p>
+        <p>Keuangan</p>
+        <p class="sign-line">.................................... (13)</p>
+    </div>
+</body>
+</html>
